@@ -2,11 +2,11 @@ package Pet;
 
 import Exceptions.ValorIncorreto;
 import Interfaces.Acoes.*;
-import Interfaces.Ambientes.*;
 import Interfaces.IBrincar;
 import Pet.Model.PetModel;
 
-public class Poo extends PetModel implements IAssistir, IComer, ITomarBanho, IBanheiro, ICozinha, ISala, IBrincar {
+public class Poo extends PetModel implements IAssistir, IComer, ITomarBanho, IBrincar {
+
 
     boolean voar;
 
@@ -52,23 +52,6 @@ public class Poo extends PetModel implements IAssistir, IComer, ITomarBanho, IBa
     public void tomarBanho() {
         System.out.println("Poo esta tomando banho.");
     }
-
-    @Override
-    public void banheiro() {
-        System.out.println("Poo esta no banheiro.");
-    }
-
-    @Override
-    public void cozinha() {
-        System.out.println("Poo esta na cozinha.");
-
-    }
-
-    @Override
-    public void sala() {
-        System.out.println("Poo esta na sala.");
-    }
-
 
     public void brincarCom() throws ValorIncorreto {
         this.brincar.brincarCom();
