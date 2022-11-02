@@ -15,17 +15,18 @@ public class Main {
 
     public static void main(String[] args) throws ValorIncorreto {
 
+        String listaDeFuncoes = """
+                Funcoes:
+                1 - Assistir TV
+                2 - Comer
+                3 - Tomar Banho
+                4- Ir para a cozinha
+                5- Brincar com a bola""";
 
 
         Cozinha cozinha = new Cozinha();
-//        cozinha.cozinha();
 
         Bola bola = new Bola();
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Qual o seu nome?" );
-        String nome = scanner.next();
-        System.out.println("Seja bem-vindo(a), " + nome + "!");
 
 
         // Parte do L
@@ -35,7 +36,7 @@ public class Main {
         flou.grita(true);
         flou.idade(7);
         flou.nadar(true);
-
+        flou.setCozinha(cozinha);
 
 
         Jimmy jimmy = new Jimmy(bola);
@@ -44,6 +45,7 @@ public class Main {
         jimmy.grita(true);
         jimmy.idade(9);
         jimmy.nadar(true);
+        jimmy.setCozinha(cozinha);
 
 
         Poo poo = new Poo(bola);
@@ -54,92 +56,120 @@ public class Main {
         poo.nadar(true);
         poo.setCozinha(cozinha);
 
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Qual o seu nome?");
+        String nome = scanner.nextLine();
 
+        // Usei regex para fazer a checagem em expressao regular
 
-        String listaDePet = "Escolha um PET:\n1 - Flou\n2 - Jimmy\n3 - Poo\n";
-        System.out.println(listaDePet);
-
+        if (!nome.matches("[A-zA-Z]+")) {
+            System.out.println("Digite um nome valido!");
+            System.exit(0);
+        } else {
+            System.out.println("Seja bem-vindo(a), " + nome + "!");
+        }
         try {
+            String listaDePet = "Escolha um PET:\n1 - Flou\n2 - Jimmy\n3 - Poo\n";
+            System.out.println(listaDePet);
+
             Scanner escolherPet = new Scanner(System.in);
             int opcoes;
             System.out.println("Selecione uma opcao: ");
             opcoes = escolherPet.nextInt();
 
-            if (opcoes == 1) {
-                System.out.println("Você escolheu Flou\n");
+            switch (opcoes) {
+                case 1:
+                    System.out.println("Voce escolheu Flou!");
+                    System.out.println("Escolha o que Flou vai fazer");
+                    System.out.println(listaDeFuncoes);
 
-            } else if (opcoes == 2) {
-                System.out.println("Você escolheu Jimmy\n");
-            } else if (opcoes == 3) {
-                System.out.println("Você escolheu Poo\n");
-            } else {
-                System.out.println("Opção inexistente");
-                System.exit(0);
+                    Scanner escolherFuncao = new Scanner(System.in);
+                    int funcoes;
+
+                    System.out.print("\nSelecione uma funcao: ");
+                    funcoes = escolherFuncao.nextInt();
+                    if (funcoes == 1) {
+                        flou.assistir();
+                        System.exit(0);
+                    } else if (funcoes == 2) {
+                        flou.comer();
+                        System.exit(0);
+                    } else if (funcoes == 3) {
+                        flou.tomarBanho();
+                        System.exit(0);
+                    } else if (funcoes == 4) {
+                        cozinha.cozinha();
+                        System.exit(0);
+                    } else if (funcoes == 5) {
+                        flou.brincarCom();
+                        System.exit(0);
+                    } else {
+                        System.out.println("Opcao inexistente.");
+                        System.exit(0);
+                    }
+                case 2:
+                    System.out.println("Voce escolheu Jimmy!");
+                    System.out.println("Escolha o que Jimmy vai fazer");
+                    System.out.println(listaDeFuncoes);
+
+                    Scanner escolherFuncao2 = new Scanner(System.in);
+                    int funcoes2;
+                    System.out.print("\nSelecione uma funcao: ");
+                    funcoes2 = escolherFuncao2.nextInt();
+                    if (funcoes2 == 1) {
+                        jimmy.assistir();
+                        System.exit(0);
+                    } else if (funcoes2 == 2) {
+                        jimmy.comer();
+                        System.exit(0);
+                    } else if (funcoes2 == 3) {
+                        jimmy.tomarBanho();
+                        System.exit(0);
+                    } else if (funcoes2 == 4) {
+                        jimmy.getCozinha().cozinha();
+                        System.exit(0);
+                    } else if (funcoes2 == 5) {
+                        jimmy.brincarCom();
+                        System.exit(0);
+                    } else {
+                        System.out.println("Opcao inexistente.");
+                        System.exit(0);
+                    }
+                case 3:
+                    System.out.println("Voce escolheu Poo!");
+                    System.out.println("Escolha o que Poo vai fazer");
+                    System.out.println(listaDeFuncoes);
+
+                    Scanner escolherFuncao3 = new Scanner(System.in);
+                    int funcoes3;
+                    System.out.print("\nSelecione uma funcao: ");
+                    funcoes3 = escolherFuncao3.nextInt();
+                    if (funcoes3 == 1) {
+                        poo.assistir();
+                        System.exit(0);
+                    } else if (funcoes3 == 2) {
+                        poo.comer();
+                        System.exit(0);
+                    } else if (funcoes3 == 3) {
+                        poo.tomarBanho();
+                        System.exit(0);
+                    } else if (funcoes3 == 4) {
+                        poo.getCozinha().cozinha();
+                        System.exit(0);
+                    } else if (funcoes3 == 5) {
+                        poo.brincarCom();
+                        System.exit(0);
+                    } else {
+                        System.out.println("Opcao inexistente.");
+                        System.exit(0);
+                    }
+                default:
+                    System.out.println("Opcao inexistente.");
+                    System.exit(0);
             }
-        } catch (RuntimeException e) {
-            System.out.println("Valor incorreto.");
+        }catch (InputMismatchException option){
+            System.out.println("Digite apenas numeros.");
             System.exit(0);
-        }
-
-        // Funcoes
-
-        String listaDeFuncoes = """
-                Escolha uma funcao:
-                1 - Assistir TV
-                2 - Comer
-                3 - Tomar Banho
-                4- Ir para a cozinha
-                5- Brincar com a bola""";
-        System.out.println(listaDeFuncoes);
-
-
-        Scanner escolherFuncao = new Scanner(System.in);
-        int funcoes;
-        try {
-            System.out.print("Selecione uma funcao: ");
-            funcoes = escolherFuncao.nextInt();
-
-
-            if (funcoes == 1) {
-                jimmy.assistir();
-            } else if (funcoes == 2) {
-                jimmy.comer();
-            } else if (funcoes == 3) {
-                jimmy.tomarBanho();
-            } else if (funcoes == 4) {
-                System.out.println("Esta brincando com a bola");
-
-
-            } else if (funcoes == 5) {
-                poo.assistir();
-            } else if (funcoes == 6) {
-                poo.comer();
-            }else if(funcoes == 7){
-                poo.tomarBanho();
-            }
-            else if (funcoes == 8) {
-                System.out.println("Esta brincando com a bola");
-            }
-
-
-            else if (funcoes == 9){
-                flou.assistir();
-            }
-            else if (funcoes == 10){
-                flou.assistir();
-            }
-            else if (funcoes == 11){
-                flou.assistir();
-            }
-            else if (funcoes == 12) {
-                System.out.println("Esta brincando com a bola");
-            }
-            else {
-                System.out.println("Digite um numero valido.");
-            }
-
-        }catch (InputMismatchException e){
-            System.out.println("Digite um numero.");
         }
     }
 }

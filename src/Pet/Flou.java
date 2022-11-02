@@ -44,7 +44,7 @@ public class Flou extends PetModel implements IAssistir, IComer, ITomarBanho, IB
 
     @Override
     public void comer() {
-        System.out.println(getClass().getName() + " esta comendo.");
+        System.out.println("Flou esta comendo.");
 
     }
 
