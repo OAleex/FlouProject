@@ -3,7 +3,7 @@ package Pet;
 import Exceptions.ValorIncorreto;
 import Interfaces.Acoes.*;
 import Interfaces.IBrincar;
-import Pet.Model.PetModel;
+
 
 public class Poo extends PetModel implements IAssistir, IComer, ITomarBanho, IBrincar {
 
