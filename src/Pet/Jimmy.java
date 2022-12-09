@@ -3,7 +3,7 @@ package Pet;
 import Exceptions.ValorIncorreto;
 import Interfaces.Acoes.*;
 import Interfaces.IBrincar;
-import Pet.Model.PetModel;
+
 
 public class Jimmy extends PetModel implements IAssistir, IComer, ITomarBanho, IBrincar {
 
@@ -11,6 +11,7 @@ public class Jimmy extends PetModel implements IAssistir, IComer, ITomarBanho, I
 
     IBrincar brincar;
 
+    public Jimmy(){}
     public Jimmy(IBrincar brincar) {
         this.brincar = brincar;
     }

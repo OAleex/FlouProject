@@ -15,13 +15,12 @@ public class Main {
 
     public static void main(String[] args) throws ValorIncorreto {
 
-        String listaDeFuncoes = """
-                Funcoes:
-                1 - Assistir TV
-                2 - Comer
-                3 - Tomar Banho
-                4- Ir para a cozinha
-                5- Brincar com a bola""";
+        String listaDeFuncoes = "Funcoes:\n"+
+                "1 - Assistir TV\n"+
+                "2 - Comer\n"+
+                "3 - Tomar Banho\n"+
+                "4- Ir para a cozinha\n"+
+                "5- Brincar com a bola";
 
 
         Cozinha cozinha = new Cozinha();
@@ -31,43 +30,31 @@ public class Main {
 
         // Parte do L
         Flou flou = new Flou(bola);
-        flou.cantar(true);
-        flou.sorri("Sorriu :)");
-        flou.grita(true);
-        flou.idade(7);
-        flou.nadar(true);
         flou.setCozinha(cozinha);
 
 
         Jimmy jimmy = new Jimmy(bola);
-        jimmy.fazerCambalhota(true);
-        jimmy.sorri("Sorriu :)");
-        jimmy.grita(true);
-        jimmy.idade(9);
-        jimmy.nadar(true);
         jimmy.setCozinha(cozinha);
 
 
         Poo poo = new Poo(bola);
-        poo.voar(true);
-        poo.sorri("Sorriu :)");
-        poo.grita(true);
-        poo.idade(21);
-        poo.nadar(true);
         poo.setCozinha(cozinha);
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Qual o seu nome?");
-        String nome = scanner.nextLine();
+        while (true){
+            System.out.println("Qual o seu nome?");
+            String nome = scanner.nextLine();
 
-        // Usei regex para fazer a checagem em expressao regular
+            // Usei regex para fazer a checagem em expressao regular
 
-        if (!nome.matches("[A-zA-Z]+")) {
-            System.out.println("Digite um nome valido!");
-            System.exit(0);
-        } else {
-            System.out.println("Seja bem-vindo(a), " + nome + "!");
+            if (!nome.matches("[A-zA-Z]+")) {
+                System.out.println("Digite um nome valido!");
+            } else {
+                System.out.println("Seja bem-vindo(a), " + nome + "!");
+                break;
+            }
         }
+        
         try {
             String listaDePet = "Escolha um PET:\n1 - Flou\n2 - Jimmy\n3 - Poo\n";
             System.out.println(listaDePet);

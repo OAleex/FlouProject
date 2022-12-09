@@ -1,4 +1,4 @@
-package Pet.Model;
+package Pet;
 
 import Ambientes.Banheiro;
 import Ambientes.Cozinha;
